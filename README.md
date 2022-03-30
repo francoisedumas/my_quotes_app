@@ -19,3 +19,6 @@ In your terminal run \
 `bin/setup` \
 `bin/dev` \
 A `yarn build:css` might also be necessary
+
+## Useful links
+[Managing JS and CSS Assets in Rails 7](https://www.csalmeida.com/log/managing-js-and-css-assets-in-rails-7/)
