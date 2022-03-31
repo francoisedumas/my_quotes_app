@@ -11,31 +11,38 @@ class QuotesTest < ApplicationSystemTestCase
   end
 
   test "should create quote" do
-    visit quotes_url
+    visit quotes_path
+    assert_selector "h1", text: "Quotes"
+
     click_on "New quote"
+    fill_in "Name", with: "Capybara quote"
 
-    fill_in "Name", with: @quote.name
-    click_on "Create Quote"
+    assert_selector "h1", text: "Quotes"
+    click_on "Create quote"
 
-    assert_text "Quote was successfully created"
-    click_on "Back"
+    assert_selector "h1", text: "Quotes"
+    assert_text "Capybara quote"
   end
 
   test "should update Quote" do
-    visit quote_url(@quote)
-    click_on "Edit this quote", match: :first
+    visit quotes_path
+    assert_selector "h1", text: "Quotes"
 
-    fill_in "Name", with: @quote.name
-    click_on "Update Quote"
+    click_on "Edit", match: :first
+    fill_in "Name", with: "Updated quote"
 
-    assert_text "Quote was successfully updated"
-    click_on "Back"
+    assert_selector "h1", text: "Quotes"
+    click_on "Update quote"
+
+    assert_selector "h1", text: "Quotes"
+    assert_text "Updated quote"
   end
 
   test "should destroy Quote" do
-    visit quote_url(@quote)
-    click_on "Destroy this quote", match: :first
+    visit quotes_path
+    assert_text @quote.name
 
-    assert_text "Quote was successfully destroyed"
+    click_on "Delete", match: :first
+    assert_no_text @quote.name
   end
 end
