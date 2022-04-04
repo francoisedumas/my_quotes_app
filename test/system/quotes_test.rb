@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class QuotesTest < ApplicationSystemTestCase
   setup do
-    @quote = quotes(:one)
+    @quote = Quote.ordered.first
   end
 
   test "visiting the index" do
