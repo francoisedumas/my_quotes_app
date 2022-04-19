@@ -1,1 +1,5 @@
 <%= turbo_stream.remove @quote %>
+<%= render_turbo_stream_flash_messages %>
+<%# we move the code below in a helper and call it with render_turbo_stream_flash_messages %>
+<%# <%= turbo_stream.prepend "flash", partial: "layouts/flash" %> %>
+
