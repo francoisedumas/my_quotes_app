@@ -3,3 +3,8 @@
 <%# we move the code below in a helper and call it with render_turbo_stream_flash_messages %>
 <%# <%= turbo_stream.prepend "flash", partial: "layouts/flash" %> %>
 
+<% unless current_company.quotes.exists? %>
+  <%= turbo_stream.update Quote.new do %>
+    <%= render "quotes/empty_state" %>
+  <% end %>
+<% end %>
