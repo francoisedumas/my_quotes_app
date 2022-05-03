@@ -26,13 +26,19 @@ class LineItemDatesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  
+  def destroy
+    @line_item_date.destroy
+
+    redirect_to quote_path(@quote), notice: "Date was successfully destroyed."
+  end
 
   private
 
   def set_line_item_date
     @line_item_date = @quote.line_item_dates.find(params[:id])
   end
-  
+
   def line_item_date_params
     params.require(:line_item_date).permit(:date)
   end
